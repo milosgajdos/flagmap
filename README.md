@@ -1,7 +1,7 @@
 flagmap
 =======
 
-Wrapper around flag package which returns a map of parsed flag values with flag names as keys
+Wrapper package around Go flag package which returns a map of parsed flag values with flag names as keys
 
 Example usage
 ==============
