@@ -6,9 +6,10 @@ Wrapper around flag package which returns a map of parsed flag values with flag 
 Example usage
 ==============
 
-package main
 
 ```go
+package main
+
 import (
 	"fmt"
 	"github.com/milosgajdos83/flagmap"
