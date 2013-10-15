@@ -24,3 +24,9 @@ func main() {
 	fmt.Printf("Options: %v", options["foo"])	
 }
 ```
+
+Once built, you can test the above code like this:
+```
+$ ./compiledbinary -foo="test"
+Options: map[foo:test]
+```
