@@ -15,18 +15,19 @@ import (
 )
 
 func init() {
-	flagmap.Var(flagmap.Option("foo"), "foo", "This is a foo option")
+        flagmap.Var(flagmap.Option("foo1"), "This is a foo1 option")
+        flagmap.Var(flagmap.Option("foo2"), "This is a foo2 option")
 }
 
 func main() {
 	options := flagmap.Parse()
 
-	fmt.Printf("Options: %v", options["foo"])	
+	fmt.Printf("Options: %v\n", options)
 }
 ```
 
 Once built, you can test the above code like this:
 ```
-$ ./compiledbinary -foo="test"
-Options: map[foo:test]
+$ ./flagmap -foo1="test1" -foo2="test2"
+Options: map[foo1:test1 foo2:test2]
 ```

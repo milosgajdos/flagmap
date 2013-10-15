@@ -12,8 +12,8 @@ type MapValue struct {
 	m    map[string]string
 }
 
-func Var(value flag.Value, name string, usage string) {
-	flag.Var(value, name, usage)
+func Var(value flag.Value, usage string) {
+	flag.Var(value, value.String(), usage)
 }
 
 func Parse() map[string]string {
@@ -31,5 +31,5 @@ func (m *MapValue) Set(value string) error {
 }
 
 func (m MapValue) String() string {
-	return fmt.Sprint(m.m)
+	return fmt.Sprint(m.name)
 }
