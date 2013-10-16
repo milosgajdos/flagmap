@@ -5,18 +5,18 @@ import (
 	"fmt"
 )
 
-var options = make(map[string]string)
+var options = make(map[string][]interface{})
 
 type MapValue struct {
 	name string
-	m    map[string]string
+	m    map[string][]interface{}
 }
 
 func Var(value flag.Value, usage string) {
 	flag.Var(value, value.String(), usage)
 }
 
-func Parse() map[string]string {
+func Parse() map[string][]interface{} {
 	flag.Parse()
 	return options
 }
@@ -26,7 +26,7 @@ func Option(name string) *MapValue {
 }
 
 func (m *MapValue) Set(value string) error {
-	m.m[m.name] = value
+	m.m[m.name] = append(m.m[m.name], value)
 	return nil
 }
 

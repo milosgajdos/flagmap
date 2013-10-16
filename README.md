@@ -1,7 +1,9 @@
 flagmap
 =======
 
-Wrapper package around Go flag package which returns a map of parsed flag values with flag names as keys
+Simplified wrapper package around Go flag package which returns a map of parsed flag values with flag names as keys and flag values as interface slices
+
+This package allows you to "aggregate" passed flags as oppose to "overriding" them which gives you more flexibility as you can see in the example code snippet below.
 
 Example usage
 ==============
@@ -24,11 +26,13 @@ func main() {
 	options := flagmap.Parse()
 
 	fmt.Printf("Options: %v\n", options)
+        fmt.Printf("Just foo2: %v\n", options["foo2"])
 }
 ```
 
 Once built, you can test the above code like this:
 ```
-$ ./flagmap -foo1="test1" -foo2="test2"
-Options: map[foo1:test1 foo2:test2]
+$ ./yourbinary -foo1="test1" -foo2="test2" -foo2=20
+All options: map[foo1:[test1] foo2:[test2 20]]
+Just foo2: [test2 20]
 ```
