@@ -34,7 +34,7 @@ func (m MapValue) String() string {
 	return fmt.Sprint(m.name)
 }
 
-func defined(name string) bool {
+func Defined(name string) bool {
         if _, ok := options[name]; !ok {
                 return false
         }
