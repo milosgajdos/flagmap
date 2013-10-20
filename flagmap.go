@@ -14,17 +14,14 @@ type MapValue struct {
 	m   FlagMap
 }
 
-func Var(value flag.Value, usage string) {
-	flag.Var(value, value.String(), usage)
-}
-
-func Parse() map[string][]interface{} {
+func Parse() FlagMap {
 	flag.Parse()
 	return options
 }
 
-func Option(name string) *MapValue {
-	return &MapValue{name, options}
+func Option(name string, usage string) {
+        mapVal := &MapValue{name, options}
+        flag.Var(mapVal, mapVal.String(), usage)
 }
 
 func (m *MapValue) Set(value string) error {
@@ -36,8 +33,8 @@ func (m MapValue) String() string {
 	return fmt.Sprint(m.name)
 }
 
-func (FlagMap) Defined(name string) bool {
-        if _, ok := options[name]; !ok {
+func (f FlagMap) Defined(name string) bool {
+        if _, ok := f[name]; !ok {
                 return false
         }
         return true

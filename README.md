@@ -18,8 +18,8 @@ import (
 )
 
 func init() {
-        flagmap.Var(flagmap.Option("foo1"), "This is a foo1 option")
-        flagmap.Var(flagmap.Option("foo2"), "This is a foo2 option")
+        flagmap.Option("foo1", "This is a foo1 option")
+        flagmap.Option("foo2", "This is a foo2 option")
 }
 
 func main() {
