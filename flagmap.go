@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-type FlagMap map[string][]interface{}
+type FlagMap map[string][]string
 
 var options = make(FlagMap)
 
