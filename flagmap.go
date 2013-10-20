@@ -5,11 +5,13 @@ import (
 	"fmt"
 )
 
-var options = make(map[string][]interface{})
+type FlagMap map[string][]interface{}
+
+var options = make(FlagMap)
 
 type MapValue struct {
 	name string
-	m    map[string][]interface{}
+	m   FlagMap
 }
 
 func Var(value flag.Value, usage string) {
@@ -34,7 +36,7 @@ func (m MapValue) String() string {
 	return fmt.Sprint(m.name)
 }
 
-func Defined(name string) bool {
+func (FlagMap) Defined(name string) bool {
         if _, ok := options[name]; !ok {
                 return false
         }
