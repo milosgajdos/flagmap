@@ -3,7 +3,7 @@ flagmap
 
 Simplified wrapper package around Go flag package which returns a map of parsed flag values with flag names as keys and flag values as strings
 You can supply a default value as a second argument go ```Options()``` function. See the example below.
-```Defined()`` method of ```FlagMap``` type evaluates to false IF the specified parameter is empty string or does not exist in the FlagMap.
+```Defined()``` method of ```FlagMap``` type evaluates to false IF the specified parameter is empty string or does not exist in the FlagMap.
 
 Example usage
 ==============
