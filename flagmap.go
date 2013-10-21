@@ -22,7 +22,7 @@ func Parse() FlagMap {
 func Option(name string, defaultVal string, usage string) {
         mapVal := &MapValue{name, defaultVal, options}
         mapVal.m[name] = defaultVal
-        flag.Var(mapVal, mapVal.String(), usage)
+        flag.Var(mapVal, mapVal.name, usage)
 }
 
 func (m *MapValue) Set(value string) error {
@@ -31,7 +31,7 @@ func (m *MapValue) Set(value string) error {
 }
 
 func (m MapValue) String() string {
-	return m.name
+	return m.m[m.name]
 }
 
 func (f FlagMap) Defined(name string) bool {
