@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-type FlagMap map[string][]string
+type FlagMap map[string]string
 
 var options = make(FlagMap)
 
@@ -25,7 +25,7 @@ func Option(name string, usage string) {
 }
 
 func (m *MapValue) Set(value string) error {
-	m.m[m.name] = append(m.m[m.name], value)
+	m.m[m.name] = value
 	return nil
 }
 
