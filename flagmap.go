@@ -19,8 +19,9 @@ func Parse() FlagMap {
 	return options
 }
 
-func Option(name string, usage string) {
+func Option(name string, defaultVal string, usage string) {
         mapVal := &MapValue{name, options}
+        mapVal.m[name] = defaultVal
         flag.Var(mapVal, mapVal.String(), usage)
 }
 
@@ -35,6 +36,10 @@ func (m MapValue) String() string {
 
 func (f FlagMap) Defined(name string) bool {
         if _, ok := f[name]; !ok {
+                return false
+        }
+
+        if f[name] == "" {
                 return false
         }
         return true

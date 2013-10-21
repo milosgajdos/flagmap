@@ -2,6 +2,8 @@ flagmap
 =======
 
 Simplified wrapper package around Go flag package which returns a map of parsed flag values with flag names as keys and flag values as strings
+You can supply a default value as a second argument go ```Options()``` function. See the example below.
+```Defined()`` method of ```FlagMap``` type evaluates to false IF the specified parameter is empty string or does not exist in the FlagMap.
 
 Example usage
 ==============
@@ -16,8 +18,8 @@ import (
 )
 
 func init() {
-        flagmap.Option("foo1", "This is a foo1 option")
-        flagmap.Option("foo2", "This is a foo2 option")
+        flagmap.Option("foo1", "", "This is a foo1 option")
+        flagmap.Option("foo2", "foo2val", "This is a foo2 option")
 }
 
 func main() {
@@ -30,7 +32,7 @@ func main() {
 
 Once built, you can test the above code like this:
 ```
-$ ./yourbinary -foo1="test1" -foo2="test2"
-Options: map[foo1:test1 foo2:test2]
-foo1 defined: true
+$ ./yourbinary -foo2="test2"
+Options: map[foo1: foo2:test2]
+foo1 defined: false
 ```
