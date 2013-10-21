@@ -2,7 +2,6 @@ package flagmap
 
 import (
 	"flag"
-	"fmt"
 )
 
 type FlagMap map[string]string
@@ -11,6 +10,7 @@ var options = make(FlagMap)
 
 type MapValue struct {
 	name string
+        defaultVal string
 	m   FlagMap
 }
 
@@ -20,7 +20,7 @@ func Parse() FlagMap {
 }
 
 func Option(name string, defaultVal string, usage string) {
-        mapVal := &MapValue{name, options}
+        mapVal := &MapValue{name, defaultVal, options}
         mapVal.m[name] = defaultVal
         flag.Var(mapVal, mapVal.String(), usage)
 }
@@ -31,7 +31,7 @@ func (m *MapValue) Set(value string) error {
 }
 
 func (m MapValue) String() string {
-	return fmt.Sprint(m.name)
+	return m.name
 }
 
 func (f FlagMap) Defined(name string) bool {
